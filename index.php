@@ -43,7 +43,7 @@
 
 	<h1>CRUD - OOP MySQLI</h1>
 	<div class="bloco-botao">
-		<a href="" class="btn-add">Adicionar</a>
+		<a href="adicionar.php" class="btn-add">Adicionar</a>
 	</div>
 	<table id="tabela">
 		<thead>
@@ -65,8 +65,8 @@
 				<td><?= $row["email"]; ?></td>
 				<td><?= $row["cpf"]; ?></td>
 				<td>
-					<a href="editar.php" class="btn-edit">Editar</a>
-					<a href="deletar.php" class="btn-del">Deletar</a>
+					<a href="editar.php?id=<?= $row["id"]; ?>" class="btn-edit">Editar</a>
+					<a href="deletar.php?id=<?= $row["id"]; ?>" class="btn-del">Deletar</a>
 				</td>
 			</tr>
 			<?php 
