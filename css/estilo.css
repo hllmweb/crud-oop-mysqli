@@ -1,0 +1,145 @@
+*, *::before, *::after{
+	padding: 0;
+	margin: 0;
+}
+html, body{
+	font-size: 100%;
+	font-family: Arial, sans-serif;
+}
+
+
+
+
+/*
+	Login
+*/
+#formLogin{
+	margin:50px auto 0 auto;
+	width: 250px;
+	background-color: #ddd;
+	padding: 20px;
+	border-radius: 6px;
+}
+#formLogin label{
+	display: block;
+	margin-bottom: 10px;
+}
+#formLogin strong{
+	display: block;
+	margin-bottom: 5px;
+}
+#formLogin input{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px;
+	font-size: 16px;
+	background-color: #f7f7f7;
+	border: 0;
+}
+#formLogin button{
+	border: 0;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+
+
+/*
+	Listar
+*/
+h1, h2{
+	text-align: center;
+	margin: 20px 0;
+}
+h2{
+	font-size: 18px;
+}
+table#tabela{
+	width: 800px;
+	margin: auto;
+	background-color: #000;
+	border-collapse: separate;
+	border-spacing: 1px;
+}
+table#tabela thead tr th{
+	background-color: #efefef;
+	text-align: center;
+	padding: 10px;
+}
+table#tabela tbody tr td{
+	padding: 10px;
+	background-color: #f7f7f7;
+}
+
+.bloco-botao{
+	width: 800px;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+}
+.btn-edit, .btn-del, .btn-add, .btn-back, .btn-go{
+	display: inline-block;
+	text-decoration: none;
+	color: #FFF;
+	padding: 8px;
+	border-radius: 6px;
+}
+.btn-edit{
+	background-color: blue;
+}
+.btn-del{
+	background-color: red;
+}
+.btn-add{
+	background-color: green;
+}
+.btn-back{
+	margin-left: 10px;
+	background-color: white;
+	color: #ccc;
+}
+.btn-go{
+	background-color: blue;
+}
+.msg-sucesso, .msg-error{
+	width: 800px;
+	display: block;
+	padding: 10px;
+	color: #FFF;
+	font-weight: bold;
+	margin: 20px auto;
+	border-radius: 6px;
+}
+.msg-sucesso{
+	background-color: green;
+}
+.msg-error{
+	background-color: red;
+}
+
+
+/*
+	Adicionar
+*/
+#formAdd{
+	width: 800px;
+	margin: auto;
+}
+#formAdd label, 
+#formAdd strong{
+	display: block;
+}
+#formAdd label{
+	margin: 10px 0;
+}
+#formAdd input{
+	width: 100%;
+	padding: 5px;
+	font-size: 16px;
+	box-sizing: border-box;
+}
+#formAdd button{
+	border: 0;
+	cursor: pointer;
+	font-size: 16px;
+}
