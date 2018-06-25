@@ -15,6 +15,7 @@
 	$listagem = new listagem();
 	$listagem->executarQUERY($query_select);
 	$row = $listagem->listar();
+	
 	$nome  		= $row["nome"];
 	$email 		= $row["email"];
 	$senha      = $row["senha"];

@@ -1,15 +1,30 @@
 <?php 
 	include_once("classe/conexao.class.php");
+	include_once("classe/adicionar.class.php");
 
 	if($_POST && $_GET["acao"] == "adicionar"):
-		$nome 		= $_POST["nome"];
+		$nome 		= utf8_decode($_POST["nome"]);
 		$email 		= $_POST["email"];
 		$senha  	= md5($_POST["senha"]);
 		$telefone 	= $_POST["telefone"];
 		$cpf 		= $_POST["cpf"];
-		$endereco 	= $_POST["endereco"];
+		$endereco 	= utf8_decode($_POST["endereco"]);
 
-		$query = "INSERT INTO usuarios (nome, email, senha, telefone, cpf, endereco) VALUES ('$nome','$email','$senha','$telefone','$cpf','$endereco')"; 
+		$inserir = new adicionando();
+		$inserir->setTabela("usuarios");
+		$inserir->setCampos("nome, email, senha, telefone, cpf, endereco");
+		$inserir->setValor("'$nome','$email','$senha','$telefone','$cpf','$endereco'");
+
+		
+		if($inserir->inserindo() == 1):
+			echo "<div class='msg-sucesso'>Dados cadastrado com sucesso! <a href='index.php' class='btn-back'>VOLTAR</a></div>";	
+		elseif($inserir->inserindo() == 0):
+			echo "erro";
+		endif;
+
+
+
+		/*$query = "INSERT INTO usuarios (nome, email, senha, telefone, cpf, endereco) VALUES ('$nome','$email','$senha','$telefone','$cpf','$endereco')"; 
 		$conectar = new conexaoMySQLI();
 		$conectar->conectar();
 		$result = $conectar->executarQUERY($query);
@@ -18,7 +33,7 @@
 			echo "<div class='msg-sucesso'>Dados cadastrado com sucesso! <a href='index.php' class='btn-back'>VOLTAR</a></div>";
 		else:
 			var_dump($result);
-		endif;
+		endif;*/
 	endif;
 
 ?>

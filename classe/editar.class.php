@@ -31,7 +31,7 @@ class editando extends conexaoMySQLI{
 
 	public function atualizando(){
 		$this->query = "UPDATE $this->tabela SET $this->campos WHERE $this->valorNaTabela = {$this->valorNaPesquisa}";
-		if(self::executarQUERY($this->query)):
+		if(parent::executarQUERY($this->query)):
 			//$this->msg = "Atualizado com sucesso";
 			return 1;
 		endif;
