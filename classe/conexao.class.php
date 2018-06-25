@@ -13,7 +13,7 @@ class conexaoMySQLI{
 	public $conexao;
 	public $result;
 	public $dados;
-
+	public $query;
 
 	public function __construct(){
 		$this->servidor 	= "localhost";

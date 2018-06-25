@@ -1,6 +1,7 @@
 <?php
 	include_once("classe/conexao.class.php");
 	include_once("classe/listar.class.php");
+	include_once("classe/editar.class.php");
 
 	@$id_usuario = (int) $_GET["id"];
 
@@ -14,32 +15,41 @@
 	$listagem = new listagem();
 	$listagem->executarQUERY($query_select);
 	$row = $listagem->listar();
-
-	$nome 		= $row["nome"];
-	$email  	= $row["email"];
-	$senha 		= $row["senha"];
+	$nome  		= $row["nome"];
+	$email 		= $row["email"];
+	$senha      = $row["senha"];
 	$telefone 	= $row["telefone"];
-	$cpf 	  	= $row["cpf"];
+	$cpf 		= $row["cpf"];
 	$endereco 	= $row["endereco"];
 
 
 	if(@$_GET["acao"] == "editar"):
 		$nome 		= utf8_decode($_POST["nome"]);
 		$email 		= $_POST["email"];
-		$senha 		= ($_POST["senha"] != $senha) ? md5($_POST["senha"]) : $_POST["senha"];
+		@$senha 		= ($_POST["senha"] != $senha) ? md5($_POST["senha"]) : $_POST["senha"];
 		$telefone 	= $_POST["telefone"];
 		$cpf 		= $_POST["cpf"];
 		$endereco   = utf8_decode($_POST["endereco"]);
 
+		$editarID = new editando();
+		$editarID->setTabela("usuarios");
+		$editarID->setCampos("nome='$nome',email='$email',senha='$senha',telefone='$telefone',cpf='$cpf',endereco='$endereco'");
+		$editarID->setValorNaTabela("id");
+		$editarID->setValorNaPesquisa($id_usuario);
 
-		$query_edit = "UPDATE usuarios SET nome='$nome', email='$email', senha='$senha' ,telefone='$telefone', cpf='$cpf', endereco='$endereco' WHERE id={$id_usuario}";
-
-		$edit = new listagem();
-		$result = $edit->executarQUERY($query_edit);
-
-		if($result === true):
+	
+		if($editarID->atualizando() == 1):
 			echo "<div class='msg-sucesso'>Usuário atualizado com sucesso! <a href='index.php' class='btn-back'>VOLTAR</a></div>";
 		endif;
+
+		//$query_edit = "UPDATE usuarios SET nome='$nome', email='$email', senha='$senha' ,telefone='$telefone', cpf='$cpf', endereco='$endereco' WHERE id={$id_usuario}";
+
+		//$edit = new listagem();
+		//$result = $edit->executarQUERY($query_edit);
+
+		//if($result === true):
+		//	echo "<div class='msg-sucesso'>Usuário atualizado com sucesso! <a href='index.php' class='btn-back'>VOLTAR</a></div>";
+		//endif;
 		
 	endif;
 ?>
