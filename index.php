@@ -1,6 +1,12 @@
 <?php
 	include_once("classe/conexao.class.php");
+	include_once("classe/autenticar.class.php");
 	include_once("classe/listar.class.php");
+
+	session_start();
+
+	$auth = new autenticando();
+	$auth->acessandoProtect();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,6 +46,8 @@
 		echo "<br>".utf8_encode($row["nome"]);
 	}*/
 ?>
+	<?= $_SESSION["email"]; ?>
+	<a href="sair.php">Sair</a>
 
 	<h1>CRUD - OOP MySQLI</h1>
 	<div class="bloco-botao">

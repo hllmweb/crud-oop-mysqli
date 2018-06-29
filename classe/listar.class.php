@@ -14,5 +14,6 @@ class listagem extends conexaoMySQLI{
 	public function listar(){
 		return $this->result->fetch_array();
 	}
+
 }
 ?>

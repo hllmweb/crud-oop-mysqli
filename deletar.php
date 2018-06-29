@@ -1,10 +1,20 @@
 <?php 
 	include_once("classe/conexao.class.php");
+	include_once("classe/deletar.class.php");
 
 	@$id_deletar = (int) $_GET["id"];
 
 	if(@$_GET["acao"] == "deletar"):
-		$query = "DELETE FROM usuarios WHERE id={$id_deletar}";
+		$deletar = new deletando();
+		$deletar->setTabela("usuarios");
+		$deletar->setValorNaTabela("id");
+		$deletar->setValorNaPesquisa($id_deletar);
+		if($deletar->deletar() == 1):
+			echo "<div style='width: 800px; background-color: green; display: block; padding: 20px; color: #FFF; font-weight: bold; margin:20px auto; border-radius: 6px; font-family:Arial, sans-serif;'>Usuário deletado com sucesso! <a href='index.php' style='text-decoration:none; background-color:#fff; color:#ccc; padding:5px; border-radius:6px; margin-left:10px;'>VOLTAR</a></div>";
+			exit();
+		endif;
+		
+		/*$query = "DELETE FROM usuarios WHERE id={$id_deletar}";
 		$conectar = new conexaoMySQLI();
 		$conectar->conectar();
 		$result = $conectar->executarQUERY($query);
@@ -12,7 +22,7 @@
 		if($result == true):
 			echo "<div style='width: 800px; background-color: green; display: block; padding: 20px; color: #FFF; font-weight: bold; margin:20px auto; border-radius: 6px; font-family:Arial, sans-serif;'>Usuário deletado com sucesso! <a href='index.php' style='text-decoration:none; background-color:#fff; color:#ccc; padding:5px; border-radius:6px; margin-left:10px;'>VOLTAR</a></div>";
 			exit();
-		endif;
+		endif;*/
 	endif;
 ?>
 <!DOCTYPE html>
