@@ -1,6 +1,12 @@
 <?php 
 	include_once("classe/conexao.class.php");
+	include_once("classe/autenticar.class.php");
 	include_once("classe/deletar.class.php");
+
+	session_start();
+
+	$auth = new autenticando();
+	$auth->acessandoProtect();	
 
 	@$id_deletar = (int) $_GET["id"];
 

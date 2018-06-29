@@ -48,7 +48,18 @@ class autenticando extends conexaoMySQLI{
 		endif;
 	}
 
+	//fazer logout
 
 
+	//esqueceu a senha?
+	public function esqueceuPassword($email){
+		$this->query = "SELECT * FROM $this->tabela WHERE email='$email'";
+		$result = parent::executarQUERY($this->query);
+		if($result->num_rows == 1):
+			return 1;
+		else:
+			return 0;
+		endif;
+	}
 }
 ?>

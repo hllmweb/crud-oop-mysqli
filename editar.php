@@ -1,7 +1,13 @@
 <?php
 	include_once("classe/conexao.class.php");
+	include_once("classe/autenticar.class.php");
 	include_once("classe/listar.class.php");
 	include_once("classe/editar.class.php");
+
+	session_start();
+
+	$auth = new autenticando();
+	$auth->acessandoProtect();
 
 	@$id_usuario = (int) $_GET["id"];
 

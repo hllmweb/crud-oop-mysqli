@@ -1,7 +1,13 @@
 <?php 
 	include_once("classe/conexao.class.php");
+	include_once("classe/autenticar.class.php");
 	include_once("classe/adicionar.class.php");
 
+	session_start();
+
+	$auth = new autenticando();
+	$auth->acessandoProtect();
+	
 	if($_POST && $_GET["acao"] == "adicionar"):
 		$nome 		= utf8_decode($_POST["nome"]);
 		$email 		= $_POST["email"];
