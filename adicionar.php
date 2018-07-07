@@ -52,6 +52,7 @@
 </head>
 <body>
 	<h1>CRUD - OOP MySQLI - Adicionar</h1>
+	<!--Fazer opção para upload de arquivo ou foto-->
 	<form action="adicionar.php?acao=adicionar" method="POST" id="formAdd">
 		<label for="nome">
 			<strong>Nome</strong>
